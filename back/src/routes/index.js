@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import userRouter from './user.routes.js';
-import taskRouter from './task.routes.js';
+import userRouter from './userRoutes.js';
+import taskRouter from './taskRoutes.js';
 
 const router = Router();
 

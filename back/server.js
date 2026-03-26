@@ -1,5 +1,5 @@
-import app from "./app";
-import dbConnect from "./src/database/index.js";
+import app from "./app.js";
+import dbConnect from "./src/config/database.js";
 import dotenv from "dotenv";
 const PORT = process.env.PORT || 3000;
 
