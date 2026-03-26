@@ -4,7 +4,7 @@
     color: white;
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     background: rgb(255, 255, 255) url('../src/img/waves.svg') bottom no-repeat;
     background-size: contain;
@@ -12,31 +12,174 @@ body{
   
 }
 .sec-container{
-    position: absolute;
-    margin-top: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 80%;
+    margin: 24px auto;
+    min-height: 80vh;
     width: 90%;
-    max-width: 1000px;
-    border-radius: 10px;
+    max-width: 1100px;
+    border-radius: 16px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
     display: flex;
-    flex-flow: column;
-    padding: 50px;
+    flex-flow: column nowrap;
+    gap: 24px;
+    padding: 34px 28px;
     overflow-x: hidden;
 }
+.dashboard-toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.dashboard-toolbar h1{
+    color: rgb(2, 23, 92);
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+#new-task-btn{
+    border: none;
+    background: linear-gradient(135deg, #0099ff 0%, #0070c0 100%);
+    color: white;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#dashboard-message{
+    min-height: 24px;
+    font-weight: 600;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pend,
+.and,
+.concl{
+    color: #164278;
+}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
-article{
+
+.task-card{
     background-color: rgb(127, 204, 255);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     color: rgb(2, 23, 92);
     font-family: var(--fonte-alternativa);
+}
+
+.task-card h3{
+    margin-bottom: 8px;
+}
+
+.task-description{
+    margin-bottom: 10px;
+}
+
+.task-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.task-actions button{
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: #0b63b5;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.task-actions .danger{
+    background-color: #b42318;
+}
+
+.empty-message{
+    color: #375270;
+    font-weight: 600;
+}
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.342);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden{
+    display: none;
+}
+
+.task-modal{
+    width: min(520px, 92vw);
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.task-modal form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-modal input,
+.task-modal textarea,
+.task-modal select{
+    margin-bottom: 8px;
+    border: 1px solid #9dc7eb;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.modal-actions{
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.modal-actions button{
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background-color: #0b63b5;
+}
+
+.modal-actions .btn-cancel{
+    background-color: #7b8794;
+}
+
+@media (max-width: 768px){
+    .sec-container{
+        padding: 22px 16px;
+    }
+
+    .dashboard-toolbar{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #new-task-btn{
+        width: 100%;
+    }
 }

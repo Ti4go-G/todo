@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minhas tarefas</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/dash.css">
     
@@ -11,71 +11,68 @@
 <body>
     <header>
         <nav class="menu" id="menu-logado">
-            <p>Bem Vindo, Tiago!</p>
-            <a href="">Sair</a>
+            <p id="welcome-text">Bem-vindo!</p>
+            <a href="#" id="logout-btn">Sair</a>
         </nav>
     </header>
     <main class="sec-container">
-        <section class="wrapper" id="pendentes">
-            <h2 class="pend">
-                Atividades Pendentes
-            </h2>
-            <div class="grid">
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-                <article>
-                    <p>Nome: </p>
-                    <p>Descrição</p>
-                    <p>Início</p>
-                    <p>Término</p>
-                    <p>Status:</p>
-                </article>
-            </div>
-        </section>
-        <section class="wrapper" id="concluídas">
-            <h2 class="concl">
-                Atividades concluidas
-            </h2>
+        <div class="dashboard-toolbar">
+            <h1>Minhas atividades</h1>
+            <button type="button" id="new-task-btn">+ Nova atividade</button>
+        </div>
 
+        <p id="dashboard-message" aria-live="polite"></p>
+
+        <section class="wrapper" id="pendentes">
+            <h2 class="pend">Atividades pendentes</h2>
+            <div class="grid" id="pending-grid"></div>
         </section>
-        <section class="wrapper" id="canceladas">
-            <h2 class="canc">
-                Atividades Canceladas
-            </h2>
+
+        <section class="wrapper" id="andamento">
+            <h2 class="and">Atividades em andamento</h2>
+            <div class="grid" id="progress-grid"></div>
+        </section>
+
+        <section class="wrapper" id="concluidas">
+            <h2 class="concl">Atividades concluidas</h2>
+            <div class="grid" id="completed-grid"></div>
         </section>
     </main>
+
+    <div class="modal-overlay hidden" id="task-modal-overlay">
+        <section class="task-modal" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
+            <h2 id="task-modal-title">Nova atividade</h2>
+            <form id="task-form">
+                <input type="hidden" id="task-id" name="taskId">
+
+                <label for="task-title">Titulo</label>
+                <input type="text" id="task-title" name="title" required>
+
+                <label for="task-description">Descricao</label>
+                <textarea id="task-description" name="description" rows="3" required></textarea>
+
+                <label for="task-start">Inicio</label>
+                <input type="datetime-local" id="task-start" name="start" required>
+
+                <label for="task-end">Termino</label>
+                <input type="datetime-local" id="task-end" name="end" required>
+
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status">
+                    <option value="pending">Pendente</option>
+                    <option value="in-progress">Em andamento</option>
+                    <option value="completed">Concluida</option>
+                </select>
+
+                <div class="modal-actions">
+                    <button type="submit" id="task-submit-btn">Salvar</button>
+                    <button type="button" id="task-cancel-btn" class="btn-cancel">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/dashboard.js"></script>
 </body>
 </html>
