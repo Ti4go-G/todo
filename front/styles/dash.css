@@ -1,0 +1,42 @@
+#menu-logado{
+    justify-content: space-between;
+
+    color: white;
+}
+body{
+    height: 100vh;
+    position: relative;
+    background: rgb(255, 255, 255) url('../src/img/waves.svg') bottom no-repeat;
+    background-size: contain;
+    font-family: var(--fonte-principal);
+  
+}
+.sec-container{
+    position: absolute;
+    margin-top: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
+    display: flex;
+    flex-flow: column;
+    padding: 50px;
+    overflow-x: hidden;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+article{
+    background-color: rgb(127, 204, 255);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(2, 23, 92);
+    font-family: var(--fonte-alternativa);
+}
